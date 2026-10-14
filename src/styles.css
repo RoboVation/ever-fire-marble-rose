@@ -1,0 +1,119 @@
+@import "tailwindcss";
+@import "maplibre-gl/dist/maplibre-gl.css";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-bg: #f3f1ec;
+  --color-surface: #fffcf8;
+  --color-surface-2: #e7e2d8;
+  --color-fg: #1c1917;
+  --color-muted: #3f3a34;
+  --color-subtle: #6f685e;
+  --color-border: #e0d9cc;
+  --color-primary: #1c1917;
+  --color-primary-fg: #f7f4ee;
+  --color-accent: #1e3a5f;
+  --color-accent-fg: #f4f7fb;
+  --color-danger: #8f2d2d;
+  --color-danger-fg: #fff7f7;
+  --color-ok: #1f6b45;
+  --color-warn: #8a5a12;
+  --color-ring: #1e3a5f;
+  --font-sans: "Outfit", "Noto Sans Sinhala", "Noto Sans Tamil", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Fraunces", "Noto Sans Sinhala", "Noto Sans Tamil", ui-serif, Georgia, serif;
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.75rem;
+  --spacing-map: 42vh;
+  --spacing-panel: 26rem;
+}
+
+html.dark {
+  --color-bg: #121418;
+  --color-surface: #1b1e24;
+  --color-surface-2: #262a32;
+  --color-fg: #f4f1ea;
+  --color-muted: #c8c1b6;
+  --color-subtle: #9c958a;
+  --color-border: #343842;
+  --color-primary: #f4f1ea;
+  --color-primary-fg: #16181d;
+  --color-accent: #d5dde8;
+  --color-accent-fg: #142033;
+  --color-danger: #f0b4b4;
+  --color-danger-fg: #2a1212;
+  --color-ok: #9dccb4;
+  --color-warn: #e2c48a;
+  --color-ring: #d5dde8;
+}
+
+@layer base {
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  html {
+    color-scheme: light;
+  }
+
+  html.dark {
+    color-scheme: dark;
+  }
+
+  html[data-text="large"] {
+    font-size: 112.5%;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100dvh;
+    background: var(--color-bg);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+    line-height: 1.5;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+.maplibregl-popup-content {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  color: var(--color-fg);
+  padding: 0.75rem;
+  box-shadow: none;
+}
+
+.maplibregl-popup-anchor-bottom .maplibregl-popup-tip,
+.maplibregl-popup-anchor-top .maplibregl-popup-tip {
+  border-top-color: var(--color-surface);
+  border-bottom-color: var(--color-surface);
+}
+
+.maplibregl-popup-close-button {
+  color: var(--color-fg);
+  font-size: 1.125rem;
+}
+
+.maplibregl-ctrl-attrib {
+  background: color-mix(in oklab, var(--color-bg) 88%, transparent);
+  color: var(--color-muted);
+  font-size: 0.65rem;
+}
+
+.maplibregl-ctrl-attrib a {
+  color: var(--color-accent);
+}
